@@ -17,12 +17,11 @@ public class Presenter implements ContractPlay.Presenter {
 
     public void makeMVP(boolean isServer) {
         ManagerModel managerModel = ManagerModel.getInstance();
+        managerModel.setPresenter(this);
+        setModel(managerModel);
 
         ViewManager viewManager = new ViewManager(isServer, this);
         setView(viewManager);
-
-        managerModel.setPresenter(this);
-        setModel(managerModel);
 
         if (isServer) {
             waitForPlayers();

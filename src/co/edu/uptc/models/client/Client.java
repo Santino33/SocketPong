@@ -14,7 +14,7 @@ public class Client {
     public Client() {
         try {
             clientServer = new ServerSocket(outPort);
-            clientSocket = new Socket("localhost", inPort);
+            clientSocket = new Socket("192.168.1.77", inPort);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

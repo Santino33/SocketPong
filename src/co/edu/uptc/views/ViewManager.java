@@ -13,8 +13,8 @@ public class ViewManager implements ContractPlay.View{
     public ViewManager(boolean isServer, Presenter presenter) {
         this.presenter = presenter;
         this.isServer = isServer;
-        if (isServer) waitingRoom = new WaitingRoom();
-        DashBoard dashBoard = new DashBoard(isServer);
+        if (this.isServer) waitingRoom = new WaitingRoom();
+        dashBoard = new DashBoard(this.isServer, presenter);
     }
 
     @Override

@@ -4,13 +4,13 @@ import java.awt.*;
 
 import javax.swing.JFrame;
 import co.edu.uptc.presenters.ContractPlay;
+import co.edu.uptc.presenters.Presenter;
 import co.edu.uptc.utils.UtilsProperties;
 
 public class DashBoard extends JFrame  {
     private MenuPanel menuPanel;
     protected GamePanel gamePanel;
     private UtilsProperties properties;
-
     public ContractPlay.Presenter presenter;
 
 
@@ -22,7 +22,8 @@ public class DashBoard extends JFrame  {
         return presenter;
     }
 
-    public DashBoard(boolean isServer) {
+    public DashBoard(boolean isServer, Presenter presenter) {
+        this.presenter = presenter;
         properties = new UtilsProperties();
         setLayout(new BorderLayout());
         initComponents(isServer);
@@ -38,6 +39,7 @@ public class DashBoard extends JFrame  {
         menuPanel = new MenuPanel(getInstance());
         add(menuPanel, BorderLayout.NORTH);
         gamePanel = new GamePanel(getInstance());
+        gamePanel.setElementsPojo(presenter.getElementPojo());
         add(gamePanel, BorderLayout.CENTER);
         this.addKeyListener(gamePanel);
         this.setLocationRelativeTo(null);

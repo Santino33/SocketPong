@@ -13,12 +13,11 @@ import co.edu.uptc.utils.Utils;
 
 public class GamePanel extends JPanel implements KeyListener {
     private DashBoard dashBoard;
-
     private ArrayList<ElementPojo> elementsPojo;
 
     public GamePanel(DashBoard dashBoard) {
         this.dashBoard = dashBoard;
-        // initComponents();
+        elementsPojo = new ArrayList<>();
     }
 
     public void initComponents() {
@@ -80,5 +79,9 @@ public class GamePanel extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public void setElementsPojo(ArrayList<ElementPojo> elementsPojo) {
+        this.elementsPojo = elementsPojo;
     }
 }

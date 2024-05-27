@@ -38,10 +38,8 @@ public class Server {
                 while(managerModel.getGameStatus() == GameStatus.WAITING){
                     try {
                         Socket linkClient = serverSocket.accept();
-                        System.out.println("Cliente conectado");
                         ClientConnection connection = new ClientConnection(linkClient, configureClientInfoGame());
                         clientConnections.add(connection);
-                        System.out.println("Conexion aceptada");
                         managerModel.getTable().duplicateSize();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -61,6 +59,7 @@ public class Server {
                     if (managerModel.getGameStatus() == GameStatus.RUNNING){
                         for (ClientConnection clientConnection: clientConnections){
                             clientConnection.sendInfo();
+                            System.out.println("InfoGame enviado a cliente");
                         }
                         gameRunning = true;
                     }
