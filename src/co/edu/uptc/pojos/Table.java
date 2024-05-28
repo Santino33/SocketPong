@@ -1,6 +1,8 @@
 package co.edu.uptc.pojos;
 
-public class Table {
+import java.io.Serializable;
+
+public class Table implements Serializable {
     private int width;
     private int height;
 
