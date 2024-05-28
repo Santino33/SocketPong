@@ -15,14 +15,7 @@ public class ClientConnection {
     }
 
     public void sendInfo(){
-        Thread sendThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true){
-                    new Thread(new ServerHandler(clientSocket, clientInfoGame)).start();
-                }
-            }
-        }); sendThread.start();
+        new Thread(new ServerHandler(clientSocket, clientInfoGame)).start();
     }
 
     public Socket getClientSocket() {

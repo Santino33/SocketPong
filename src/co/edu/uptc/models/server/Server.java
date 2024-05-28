@@ -56,10 +56,10 @@ public class Server {
             public void run() {
                 boolean gameRunning = false;
                 while(!gameRunning){
+                    System.out.println("Game running");
                     if (managerModel.getGameStatus() == GameStatus.RUNNING){
                         for (ClientConnection clientConnection: clientConnections){
                             clientConnection.sendInfo();
-                            System.out.println("InfoGame enviado a cliente");
                         }
                         gameRunning = true;
                     }
