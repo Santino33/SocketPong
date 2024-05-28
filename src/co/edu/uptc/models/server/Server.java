@@ -41,7 +41,8 @@ public class Server {
                         ClientConnection connection = new ClientConnection(linkClient, configureClientInfoGame());
                         clientConnections.add(connection);
                         managerModel.getTable().duplicateSize();
-                    } catch (IOException e) {
+                        Thread.sleep(100);
+                    } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
                         throw new RuntimeException(e);
                     }
@@ -56,7 +57,7 @@ public class Server {
             public void run() {
                 boolean gameRunning = false;
                 while(!gameRunning){
-                    System.out.println("Game running");
+                    System.out.print("");
                     if (managerModel.getGameStatus() == GameStatus.RUNNING){
                         for (ClientConnection clientConnection: clientConnections){
                             clientConnection.sendInfo();
@@ -70,6 +71,8 @@ public class Server {
 
     private InfoGame configureClientInfoGame(){
         InfoGame infoGame = managerModel.getInfoGame();
+        infoGame.getTableSize().setHeight(800);
+        infoGame.getTableSize().setWidth(400);
         int clientPosition = clientConnections.size();
         if (clientPosition == 0){
             infoGame.setPresentPadle1(true);

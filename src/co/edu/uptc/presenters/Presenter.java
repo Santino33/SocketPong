@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import co.edu.uptc.models.GameStatus;
 import co.edu.uptc.models.ManagerModel;
 import co.edu.uptc.pojos.ElementPojo;
+import co.edu.uptc.pojos.Table;
 import co.edu.uptc.presenters.ContractPlay.Model;
 import co.edu.uptc.presenters.ContractPlay.View;
 import co.edu.uptc.views.DashBoard.DashBoard;
@@ -64,6 +65,11 @@ public class Presenter implements ContractPlay.Presenter {
     @Override
     public ArrayList<ElementPojo> getElementPojo() {
         return model.getElementsPojo();
+    }
+
+    @Override
+    public Table getTable() {
+        return this.model.getTable();
     }
 
     @Override

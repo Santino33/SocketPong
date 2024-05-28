@@ -6,6 +6,7 @@ import co.edu.uptc.models.packages.InfoGame;
 import co.edu.uptc.models.client.Client;
 import co.edu.uptc.models.server.Server;
 import co.edu.uptc.pojos.ElementPojo;
+import co.edu.uptc.pojos.Table;
 import co.edu.uptc.presenters.ContractPlay;
 import co.edu.uptc.utils.Utils;
 import co.edu.uptc.utils.UtilsProperties;
@@ -25,6 +26,8 @@ public class ManagerModel implements ContractPlay.Model {
     private Server server;
     private Client client;
     private int players;
+    //This array contains the booleans that indicate if the view has to print elements. Ball[0], Padle1[1], Padle2[2]
+    private boolean[] isPresentControl;
 
     private ManagerModel(){
         players = 0;
@@ -35,6 +38,7 @@ public class ManagerModel implements ContractPlay.Model {
         createElement();
         Collision();
         instance = this;
+        isPresentControl = new boolean[3];
     }
 
     public static synchronized ManagerModel getInstance() {
@@ -87,7 +91,7 @@ public class ManagerModel implements ContractPlay.Model {
 
     public void createElement() {
         ball = new BallModel(750, 300, 40, 40);
-        padle1 = new PadleModel(20, 100, 50, 100);
+        padle1 = new PadleModel(20, 100, 50, 80);
         padle2 = new PadleModel(1450, 100, 50, 100);
     }
 
@@ -147,12 +151,17 @@ public class ManagerModel implements ContractPlay.Model {
     public InfoGame getInfoGame(){
         return new InfoGame(ball.getballPojo(),
                 padle1.getPadlePojo(),
-                padle2.getPadlePojo());
+                padle2.getPadlePojo(), table);
     }
 
     public void setInfoGame(InfoGame info){
         this.ball.setBallPojo(info.getBallPojo());
         this.padle1.setPadlePojo(info.getPadle1Pojo());
         this.padle2.setPadlePojo(info.getPadle2Pojo());
+        this.isPresentControl[0] = info.isPresentBall();
+        this.isPresentControl[1] = info.isPresentPadle1();
+        this.isPresentControl[2] = info.isPresentPadle2();
+        this.table.setHeight(info.getTableSize().getHeight());
+        this.table.setWidth(info.getTableSize().getWidth());
     }
 }

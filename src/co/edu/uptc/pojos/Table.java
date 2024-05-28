@@ -1,4 +1,4 @@
-package co.edu.uptc.models;
+package co.edu.uptc.pojos;
 
 public class Table {
     private int width;

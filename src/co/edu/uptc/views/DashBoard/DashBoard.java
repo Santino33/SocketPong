@@ -34,7 +34,7 @@ public class DashBoard extends JFrame  {
     }
 
     public void initComponents(boolean isServer) {
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(new Dimension(presenter.getTable().getWidth(), presenter.getTable().getHeight()));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuPanel = new MenuPanel(getInstance());
         add(menuPanel, BorderLayout.NORTH);

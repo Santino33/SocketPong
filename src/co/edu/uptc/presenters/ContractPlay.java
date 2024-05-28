@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import co.edu.uptc.models.GameStatus;
 import co.edu.uptc.models.PadleModel;
-import co.edu.uptc.models.Table;
+import co.edu.uptc.pojos.Table;
 import co.edu.uptc.pojos.ElementPojo;
 
 public class ContractPlay {
@@ -52,6 +52,8 @@ public class ContractPlay {
         public Model getModel();
 
         public ArrayList<ElementPojo> getElementPojo();
+
+        public Table getTable();
 
     }
 }

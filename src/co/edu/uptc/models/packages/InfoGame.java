@@ -1,5 +1,6 @@
 package co.edu.uptc.models.packages;
 
+import co.edu.uptc.pojos.Table;
 import co.edu.uptc.pojos.ElementPojo;
 
 import java.io.Serializable;
@@ -8,17 +9,27 @@ public class InfoGame implements Serializable {
     private ElementPojo ballPojo;
     private ElementPojo padle1Pojo;
     private ElementPojo padle2Pojo;
+    private Table tableSize;
     private boolean presentBall;
     private boolean presentPadle1;
     private boolean presentPadle2;
 
-    public InfoGame(ElementPojo ballPojo, ElementPojo padle1Pojo, ElementPojo padle2Pojo) {
+    public InfoGame(ElementPojo ballPojo, ElementPojo padle1Pojo, ElementPojo padle2Pojo, Table table) {
         this.ballPojo = ballPojo;
         this.padle1Pojo = padle1Pojo;
         this.padle2Pojo = padle2Pojo;
+        this.tableSize = table;
         this.presentBall = true;
         this.presentPadle1 = false;
         this.presentPadle2 = false;
+    }
+
+    public Table getTableSize() {
+        return tableSize;
+    }
+
+    public void setTableSize(Table tableSize) {
+        this.tableSize = tableSize;
     }
 
     public ElementPojo getBallPojo() {
